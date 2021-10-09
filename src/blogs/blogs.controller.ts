@@ -2,10 +2,17 @@ import { Controller } from '@nestjs/common';
 import { BlogService } from './blog.service';
 import { MessagePattern } from '@nestjs/microservices';
 import { CreateBlogDto } from './createBlog.dto';
+import { of } from "rxjs";
+import { delay } from "rxjs/operators";
 
 @Controller()
 export class BlogsController {
   constructor(private readonly blogService: BlogService) {}
+
+  @MessagePattern({ cmd: "ping" })
+  ping(_: any) {
+    return of("pong").pipe(delay(1000));
+  }
 
   @MessagePattern({ cmd: 'getBlogs' })
   getBlogs() {

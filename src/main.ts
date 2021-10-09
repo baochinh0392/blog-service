@@ -4,8 +4,6 @@ import { AppModule } from "./app.module";
 // Import firebase-admin
 import * as admin from 'firebase-admin';
 import { ServiceAccount } from "firebase-admin";
-import { config } from 'aws-sdk';
-import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice(AppModule, {
@@ -26,12 +24,6 @@ async function bootstrap() {
   admin.initializeApp({
     credential: admin.credential.cert(adminConfig),
     databaseURL: process.env.DATABASE_URL,
-  });
-  const configService = app.get(ConfigService);
-  config.update({
-    accessKeyId: configService.get('AWS_ACCESS_KEY_ID'),
-    secretAccessKey: configService.get('AWS_SECRET_ACCESS_KEY'),
-    region: configService.get('AWS_REGION'),
   });
 
   app.listen();

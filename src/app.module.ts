@@ -15,10 +15,6 @@ import * as Joi from '@hapi/joi';
         POSTGRES_USER: Joi.string().required(),
         POSTGRES_PASSWORD: Joi.string().required(),
         POSTGRES_DB: Joi.string().required(),
-        S3_ACCESS_KEY: Joi.string().required(),
-        S3_SECRET_KEY: Joi.string().required(),
-        S3_REGION: Joi.string().required(),
-        S3_BUCKET: Joi.string().required(),
         PORT: Joi.number(),
       })
     }),

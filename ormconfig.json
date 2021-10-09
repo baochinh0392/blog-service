@@ -1,0 +1,17 @@
+[
+  {
+    "name": "default",
+    "type": "postgres",
+    "host": "database-noah.c7yar4zb5m55.us-east-2.rds.amazonaws.com",
+    "port": 5432,
+    "username": "postgres",
+    "password": "postgres",
+    "database": "blogsnoahdb",
+    "entities": ["dist/**/*.entity{ .ts,.js}"],
+    "synchronize": false,
+    "migrations": ["dist/migrations/*{.ts,.js}"],
+    "migrationsTableName": "migrations_typeorm",
+    "migrationsRun": true,
+    "cli": { "migrationsDir": "src/migrations" }
+  }
+]

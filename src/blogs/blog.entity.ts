@@ -11,6 +11,6 @@ export class Blog {
   @Column()
   public content: string;
 
-  @Column()
+  @Column({ nullable: true })
   public image: string;
 }

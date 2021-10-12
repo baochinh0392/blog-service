@@ -30,6 +30,7 @@ lerna-debug.log*
 # env
 .env
 .build/*
+.aws/*
 
 # IDE - VSCode
 .vscode/*

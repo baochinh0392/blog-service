@@ -5,13 +5,16 @@
   "author": "",
   "private": true,
   "engines": {
-    "node": "14.x"
+    "node": "14.16.0",
+    "npm": "7.20.5"
   },
   "type": "module",
   "license": "UNLICENSED",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
+    "prestart:prod": "rimraf dist && npm run build --prod",
+    "heroku-postbuild": "npm run prestart:prod",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -25,8 +28,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/.bin/typeorm",
     "migration:generate": "npm run build && npm run typeorm migration:generate -- -n",
-    "migration:run": "npm run build && npm run typeorm migration:run",
-    "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build"
+    "migration:run": "npm run build && npm run typeorm migration:run"
   },
   "dependencies": {
     "@hapi/joi": "^17.1.1",
